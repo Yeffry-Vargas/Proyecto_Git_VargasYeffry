@@ -46,7 +46,16 @@ def registrar_item():
     titulo = input("Ingrese el título: ")
     autor = input("Ingrese el autor: ")
     categoria = input("Ingrese la categoría: ")
-    cantidad = int(input("Ingrese la cantidad total: "))
+    while True:
+        entrada = input("Ingrese la cantidad total: ")
+        try:
+            cantidad = int(entrada)
+            if cantidad <= 0:
+                print("La cantidad debe ser un número mayor a 0.")
+                continue
+            break
+        except ValueError:
+            print("Debe ingresar un número válido.")
     ubicacion = input("Ingrese la ubicación: ")
 
     item = {
@@ -171,3 +180,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+registrar_item
