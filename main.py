@@ -35,6 +35,36 @@ def registrar_item():
     inventario.append(item)
     print(f'item "{titulo}" registrado exitosamente. Disponibles: {cantidad}')
 
+def listar_items():
+    if not inventario:
+        print("No hay item registrados tadavia.")
+        return
+
+    print("=== LISTADO DE ITEMS===")
+    for item in inventario:
+        print(f"[{item['codigo']}] {item['titulo']} - {item['autor']} "
+              f"| Disponibles: {item['cantidad_disponible']}/{item['cantidad_total']} "
+              f"| Ubicación: {item['ubicacion']}")
+    print ("======================")
+
+def buscar_item():
+    termino = input("Ingrese titulo o codigo a buscar: ").lower()
+    encontrados = [
+        item for item in inventario
+        if termino in item["titulo"].lower() or termino in item["codigo"].lower()
+    ]
+
+    if not encontrados:
+        print("No se encontraron items von este critero.")
+        return
+
+    print("==== RESULTADOS DE BUSQUEDA ====")
+    for item in encontrados:
+        print(f"[{item['codigo']}] {item['titulo']} - {item['autor']} "
+              f"| Disponibles: {item['cantidad_disponible']}/{item['cantidad_total']}")
+
+    print("=================================")
+
 
 def main():
     while True:
@@ -43,6 +73,10 @@ def main():
 
         if opcion == "1":
             registrar_item()
+        elif opcion == "2":
+            listar_items()
+        elif opcion == "3":
+            buscar_item()
         elif opcion == "6":
             print("Saliendo del sistema...")
             break
