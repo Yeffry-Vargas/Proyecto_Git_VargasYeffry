@@ -65,6 +65,57 @@ def buscar_item():
 
     print("=================================")
 
+prestamos = []
+
+
+def registrar_prestamo():
+    codigo = input("Ingrese el codigo del item a prestar: ")
+    item = next((i for i in inventario if i["codigo"] == codigo), None)
+
+    if item is None:
+        print("Item no encontrado. ")
+        return
+
+    if item["cantidad_disponible"] <= 0:
+        print(f'No hay unidades disponibles de "{item["titulo"]}" ')
+        return
+
+    usuario = input("Ingrese el nombre del usuario: ")
+    fecha = input("Ingrese la fecha del prestamo (YYYY-MM-DD): ")
+
+    item["cantidad_disponible"] -= 1
+    prestamos.append({
+        "codigo": codigo,
+        "titulo": item["titulo"],
+        "usuario": usuario,
+        "fecha_prestamo": fecha,
+        "devuelto": False,
+    })
+
+    print(f'Prestamo registrado: "{item["titulo"]}" a {usuario} ')
+
+
+def registrar_devolucion():
+    codigo = input("Ingrese el código del ítem a devolver: ")
+    usuario = input("Ingrese el nombre del usuario: ")
+
+    prestamo = next(
+        (p for p in prestamos
+         if p["codigo"] == codigo and p["usuario"] == usuario and not p["devuelto"]),
+        None
+    )
+
+    if prestamo is None:
+        print("No se encontró un préstamo activo con esos datos. ")
+        return
+
+    prestamo["devuelto"] = True
+    item = next((i for i in inventario if i["codigo"] == codigo), None)
+    if item:
+        item["cantidad_disponible"] += 1
+
+    print(f'Devolución registrada: "{prestamo["titulo"]}" de {usuario} ')
+
 
 def main():
     while True:
@@ -77,6 +128,10 @@ def main():
             listar_items()
         elif opcion == "3":
             buscar_item()
+        elif opcion == "4":
+            registrar_prestamo()
+        elif opcion == "5":
+            registrar_devolucion()
         elif opcion == "6":
             print("Saliendo del sistema...")
             break
