@@ -1,0 +1,11 @@
+[
+  {
+    "codigo": "45",
+    "titulo": "Papas",
+    "autor": "Yo",
+    "categoria": "Paquete",
+    "cantidad_total": 2,
+    "cantidad_disponible": 2,
+    "ubicacion": "Tienda"
+  }
+]

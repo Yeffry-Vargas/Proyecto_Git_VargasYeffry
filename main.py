@@ -1,3 +1,30 @@
+import json
+ARCHIVO_INVENTARIO = "inventario.json"
+ARCHIVO_PRESTAMOS = "prestamos.json"
+
+def guardar_datos():
+    with open(ARCHIVO_INVENTARIO, "w", encoding="utf-8") as f:
+        json.dump(inventario, f, indent=2, ensure_ascii=False)
+
+    with open(ARCHIVO_PRESTAMOS, "w", encoding="utf-8") as f:
+        json.dump(prestamos, f, indent=2, ensure_ascii=False)
+
+
+def cargar_datos():
+    global inventario, prestamos
+    try:
+        with open(ARCHIVO_INVENTARIO, "r", encoding="utf-8") as f:
+            inventario = json.load(f)
+    except FileNotFoundError:
+        inventario = []
+
+    try:
+        with open(ARCHIVO_PRESTAMOS, "r", encoding="utf-8") as f:
+            prestamos = json.load(f)
+    except FileNotFoundError:
+        prestamos = []
+
+
 inventario = []
 
 
@@ -124,14 +151,17 @@ def main():
 
         if opcion == "1":
             registrar_item()
+            guardar_datos()
         elif opcion == "2":
             listar_items()
         elif opcion == "3":
             buscar_item()
         elif opcion == "4":
             registrar_prestamo()
+            guardar_datos()
         elif opcion == "5":
             registrar_devolucion()
+            guardar_datos()
         elif opcion == "6":
             print("Saliendo del sistema...")
             break
