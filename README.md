@@ -28,10 +28,10 @@ Integrantes: Yeffry Vargas y Diosito
 | `git restore` | Descartar cambios locales no deseados |
 
 # Conflicto de merge resuelto
-Simule una especie de conflicto editando la misma sección del archivo `README.md` desde dos ramas distintas (`fix/actualizar-readme-v1`, creada en el repositorio local, y `fix/actualizar-readme-v2`, creada desde un clon del repositorio simulando a otro usuario). Al fusionar la segunda rama contra `main`, GitHub detectó el conflicto. Se resolvió combinando el contenido de ambas versiones directamente en el editor de conflictos de GitHub, eliminando las marcas `<<<<<<<`, `=======` y `>>>>>>>`, y confirmando la resolución con `Mark as resolved` y `Commit merge`.
+Simule una especie de conflicto editando la misma sección del archivo README.md desde dos ramas distintas (fix/actualizar-readme-v1, creada en el repositorio local, y fix/actualizar-readme-v2, creada desde un clon del repositorio simulando a otro usuario). Al fusionar la segunda rama contra main, GitHub detectó el conflicto. Se resolvió combinando el contenido de ambas versiones directamente en el editor de conflictos de GitHub, eliminando las marcas <<<<<<<, ======= y >>>>>>>, y confirmando la resolución con Mark as resolved y Commit merge.
 
 # Clonación
-Clone el repositorio en una carpeta separada (`Proyecto_Git_VargasYeffry_Clon`) con `git clone`, simulando la incorporación de un nuevo usuario al proyecto.
+Clone el repositorio en una carpeta separada (Proyecto_Git_VargasYeffry_Clon) con git clone, simulando la incorporación de un nuevo usuario al proyecto.
 
 # Conclusión 
 Trate de hacer mi mejor esfuerzo al realizar según los criterios o rubricas mencionados o impuestas, tratando de enfocarme sobre todo en aplicar bien el flujo del trabajo con Git  
